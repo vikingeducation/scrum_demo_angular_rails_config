@@ -1,0 +1,9 @@
+<button ng-click="createMessage()">Create Message</button>
+
+<ul>
+  <li ng-repeat="message in messages | orderBy: '-created_at'">
+    {{ $index + 1 }}. {{ message.body }}
+    <a href="" ng-click="destroyMessage(message)" style="color: red;">&times;</a>
+  </li>
+</ul>
+
