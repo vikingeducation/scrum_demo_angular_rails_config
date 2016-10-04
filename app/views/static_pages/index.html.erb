@@ -1,5 +1,14 @@
+<%= content_for(:angular_app) do %>
+  ng-app="MyApp"
+<% end %>
+
+
+<div ui-view="user"></div>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+
 <h1>Messages!</h1>
 
 
-<div ui-view></div>
+<div ui-view="messages"></div>
 

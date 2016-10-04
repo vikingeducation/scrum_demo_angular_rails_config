@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 
-var MyApp = angular.module('MyApp', ['ui.router', 'restangular']);
+var MyApp = angular.module('MyApp', ['ui.router', 'restangular', 'Devise']);
 
 // Service for Lodash/Underscore
 MyApp.factory('_', ['$window', function($window) {
@@ -45,8 +45,16 @@ MyApp.config(
     $stateProvider
       .state('messages', {
         url: '/messages',
-        controller: 'MessagesCtrl',
-        templateUrl: '/templates/messages/index.html'
+        views: {
+          "messages": {
+            controller: 'MessagesCtrl',
+            templateUrl: '/templates/messages/index.html'
+          },
+          "user": {
+            controller: 'UsersCtrl',
+            template: '<h1>{{ currentUser.email }}</h1>'
+          }
+        }
       });
 
   }]);
@@ -97,5 +105,22 @@ MyApp.controller('MessagesCtrl',
     };
 
   }]);
+
+
+// UsersCtrl
+MyApp.controller('UsersCtrl',
+  ['$scope', 'Auth',
+  function($scope, Auth) {
+
+    Auth.currentUser()
+      .then(function(user) {
+        $scope.currentUser = user;
+        console.log(user);
+      }, function(response) {
+        console.error(response);
+      });
+
+  }]);
+
 
 

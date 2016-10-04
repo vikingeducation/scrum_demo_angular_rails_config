@@ -21,6 +21,14 @@ messages = []
 Message.create(messages)
 
 
+puts 'Creating Users'
+
+User.create({
+  :email => 'foo@bar.com',
+  :password => 'password'
+})
+
+
 puts 'Done.'
 
 

@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'angularjs-rails'
+gem 'devise'
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
