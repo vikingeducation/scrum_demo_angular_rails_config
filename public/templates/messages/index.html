@@ -1,8 +1,9 @@
 <button ng-click="createMessage()">Create Message</button>
 
 <ul>
+  <li ng-if="!messages.length">No messages</li>
   <li ng-repeat="message in messages | orderBy: '-created_at'">
-    {{ $index + 1 }}. {{ message.body }}
+    ID: {{ message.id }} | Body: {{ message.body }}
     <a href="" ng-click="destroyMessage(message)" style="color: red;">&times;</a>
   </li>
 </ul>
